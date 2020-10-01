@@ -58,21 +58,7 @@ cliente_voo (cliente, voo, classe)
  
 06. Crie um gatilho que some milhas ao cartão de milhagem sempre que um cliente é adicionado a um voo. (considere que é adicionado 1 milha no cartão para cada 10 milhas de distância percorrida em um voo).
  
-create trigger add_milhas after
-insert cliente_voo
-as
-UPDATE milhas SET quantidade = quantidade + 
-(SELECT distancia FROM voo, cliente_voo 
-WHERE new.voo = voo.codigo
-) / 10
-WHERE  cliente = new.cliente;
- 
 07. Crie um gatilho que adicione mais um passageiro a um voo sempre que um cliente entre em um voo. (Dica: lembre da relação cliente_voo).
- 
-create trigger add_milhas after
-insert cliente_voo
-as
-UPDATE voo SET num_passageiros = num_passageiros + 1;
  
 08. Crie um gatilho que delete todos os clientes de um voo sempre que aquele voo for deletado e mais um gatilho para deletar o piloto. (Para efeito de informação, considere que o avião caiu).
  
